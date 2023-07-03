@@ -85,11 +85,11 @@ class DoorkeeperClient < Sinatra::Base
   end
 
   def public_client
-    OAuth2::Client.new(app.public_client_id, nil, site: app.provider_url)
+    OAuth2::Client.new(app.public_client_id, nil, site: app.provider_url, authorize_url: '/authorization/new??type=web_server', token_url: '/authorization/token??type=web_server')
   end
 
   def confidential_client
-    OAuth2::Client.new(app.confidential_client_id, app.confidential_client_secret, site: app.provider_url)
+    OAuth2::Client.new(app.confidential_client_id, app.confidential_client_secret, site: app.provider_url, authorize_url: '/authorization/new?type=web_server', token_url: '/authorization/token?type=web_server')
   end
 
   def access_token
@@ -166,6 +166,8 @@ class DoorkeeperClient < Sinatra::Base
         .auth_code
         .get_token(
           params[:code],
+          client_id: app.confidential_client_id,
+          client_secret: app.confidential_client_secret,
           redirect_uri: app.confidential_client_redirect_uri,
           code_verifier: code_verifier
         )

@@ -1,4 +1,6 @@
-# Doorkeeper Sinatra Client
+# Doorkeeper Sinatra Client for Basecamp
+
+This app is an OAuth 2 client that runs on Sinatra is patched to work with Basecamp 4 OAuth.
 
 [![Build Status](https://semaphoreci.com/api/v1/doorkeeper-gem/doorkeeper-sinatra-client/branches/master/badge.svg)](https://semaphoreci.com/doorkeeper-gem/doorkeeper-sinatra-client)
 
@@ -22,7 +24,7 @@ Install all dependencies with:
 
 ### Client application
 
-If you have your own provider or you are using [this example](http://doorkeeper-provider.herokuapp.com/), you'll need to create a new client for this application. Make sure to append the `/callback` to the `redirect uri` (e.g. `http://localhost:9393/callback`).
+If you have your own provider or you are using [this example](http://doorkeeper-provider.herokuapp.com/), you'll need to create a new client for this application. Make sure to append the `/callback` to the `redirect uri` (e.g. `http://localhost:9292/callback`).
 
 ### Environment variables
 
@@ -33,9 +35,9 @@ You need to setup few environment variables in order to make the client work. Yo
 
     export CONFIDENTIAL_CLIENT_ID           = "129477f..."
     export CONFIDENTIAL_CLIENT_SECRET       = "c1eec90..."
-    export CONFIDENTIAL_CLIENT_REDIRECT_URI = "http://localhost:9393/callback"
+    export CONFIDENTIAL_CLIENT_REDIRECT_URI = "http://localhost:9292/callback"
 
-    export PROVIDER_URL = "http://you-server-app.com"
+    export PROVIDER_URL = "https://launchpad.37signals.com"
 
 or set them in a file named `.env` in the app's root. This file is loaded automatically by the app.
 
@@ -45,9 +47,9 @@ or set them in a file named `.env` in the app's root. This file is loaded automa
 
     CONFIDENTIAL_CLIENT_ID           = "129477f..."
     CONFIDENTIAL_CLIENT_SECRET       = "c1eec90..."
-    CONFIDENTIAL_CLIENT_REDIRECT_URI = "http://localhost:9393/callback"
+    CONFIDENTIAL_CLIENT_REDIRECT_URI = "http://localhost:9292/callback"
 
-    PROVIDER_URL = "http://you-server-app.com"
+    export PROVIDER_URL = "https://launchpad.37signals.com"
 
 ## Start the server
 
